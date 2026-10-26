@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ikon: eit notatark med linjer og ein blyant. Teikna på 108x108, der dei
+     midtre 66x66 alltid er synlege. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Arket -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M36,30 L66,30 L74,38 L74,78 L36,78 Z" />
+    <!-- Brett i hjørnet -->
+    <path
+        android:fillColor="#C9D8E8"
+        android:pathData="M66,30 L66,38 L74,38 Z" />
+    <!-- Tekstlinjer -->
+    <path
+        android:fillColor="#2F5D8A"
+        android:pathData="M42,44 h22 v3 h-22 Z M42,52 h26 v3 h-26 Z M42,60 h26 v3 h-26 Z M42,68 h16 v3 h-16 Z" />
+    <!-- Blyant -->
+    <path
+        android:fillColor="#F2B233"
+        android:pathData="M60,78 L80,58 L85,63 L65,83 Z" />
+    <path
+        android:fillColor="#E5735C"
+        android:pathData="M80,58 L83,55 L88,60 L85,63 Z" />
+    <path
+        android:fillColor="#3A3A3A"
+        android:pathData="M60,78 L65,83 L58,85 Z" />
+</vector>

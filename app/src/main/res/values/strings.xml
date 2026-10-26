@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Froditor</string>
+    <string name="new_note">Nytt notat</string>
+    <string name="empty_list">Ingen notat enno.\nTrykk + for å skrive det første.</string>
+    <string name="untitled">(utan tittel)</string>
+    <string name="note">Notat</string>
+    <string name="back">Tilbake</string>
+    <string name="share">Del</string>
+    <string name="delete">Slett</string>
+    <string name="cancel">Avbryt</string>
+    <string name="delete_title">Slette notatet?</string>
+    <string name="delete_text">Dette kan ikkje angrast.</string>
+    <string name="placeholder">Skriv her …</string>
+</resources>
