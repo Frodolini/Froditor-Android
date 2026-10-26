@@ -18,6 +18,9 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.ui.res.painterResource
+import no.frodolini.froditor.data.NoteColor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -38,17 +41,26 @@ import no.frodolini.froditor.R
 @Composable
 fun EditorScreen(
     text: String,
+    color: NoteColor,
     onTextChange: (String) -> Unit,
+    onColorChange: (NoteColor) -> Unit,
     onBack: () -> Unit,
     onShare: () -> Unit,
     onDelete: () -> Unit,
 ) {
     var confirmDelete by rememberSaveable { mutableStateOf(false) }
+    var pickColor by rememberSaveable { mutableStateOf(false) }
     val focus = remember { FocusRequester() }
 
+    // Heile skjermen, inkludert verktøylinja, får fargen til notatet.
+    val bg = color.toColorOrNull() ?: MaterialTheme.colorScheme.surface
+
     Scaffold(
+        containerColor = bg,
+        contentColor = MaterialTheme.colorScheme.onSurface,
         topBar = {
             TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = bg),
                 title = { Text(stringResource(R.string.note)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
@@ -56,6 +68,9 @@ fun EditorScreen(
                     }
                 },
                 actions = {
+                    IconButton(onClick = { pickColor = true }) {
+                        Icon(painterResource(R.drawable.ic_palette), stringResource(R.string.color))
+                    }
                     IconButton(onClick = onShare, enabled = text.isNotBlank()) {
                         Icon(Icons.Filled.Share, stringResource(R.string.share))
                     }
@@ -89,6 +104,17 @@ fun EditorScreen(
     // Eit nytt, tomt notat får tastaturet opp med ein gong.
     LaunchedEffect(Unit) {
         if (text.isEmpty()) focus.requestFocus()
+    }
+
+    if (pickColor) {
+        ColorPickerDialog(
+            current = color,
+            onPick = {
+                onColorChange(it)
+                pickColor = false
+            },
+            onDismiss = { pickColor = false },
+        )
     }
 
     if (confirmDelete) {

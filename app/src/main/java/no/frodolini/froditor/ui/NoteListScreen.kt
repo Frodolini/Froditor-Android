@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -30,6 +31,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import no.frodolini.froditor.R
 import no.frodolini.froditor.data.Note
+import no.frodolini.froditor.data.NoteColor
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -43,6 +45,7 @@ private val dateFormat: DateTimeFormatter =
 @Composable
 fun NoteListScreen(
     notes: List<Note>,
+    colors: Map<String, NoteColor>,
     onNoteClick: (Note) -> Unit,
     onNewNote: () -> Unit,
 ) {
@@ -77,7 +80,11 @@ fun NoteListScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 items(notes, key = { it.id }) { note ->
-                    NoteCard(note, onClick = { onNoteClick(note) })
+                    NoteCard(
+                        note = note,
+                        color = colors[note.id] ?: NoteColor.DEFAULT,
+                        onClick = { onNoteClick(note) },
+                    )
                 }
             }
         }
@@ -85,11 +92,20 @@ fun NoteListScreen(
 }
 
 @Composable
-private fun NoteCard(note: Note, onClick: () -> Unit) {
+private fun NoteCard(note: Note, color: NoteColor, onClick: () -> Unit) {
+    val bg = color.toColorOrNull()
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
+        colors = if (bg != null) {
+            CardDefaults.cardColors(
+                containerColor = bg,
+                contentColor = MaterialTheme.colorScheme.onSurface,
+            )
+        } else {
+            CardDefaults.cardColors()
+        },
     ) {
         Column(Modifier.padding(16.dp)) {
             Text(

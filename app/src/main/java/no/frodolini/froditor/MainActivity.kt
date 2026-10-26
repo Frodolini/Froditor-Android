@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
                 if (vm.openNoteId == null) {
                     NoteListScreen(
                         notes = vm.notes,
+                        colors = vm.noteColors,
                         onNoteClick = vm::open,
                         onNewNote = vm::newNote,
                     )
@@ -36,7 +37,9 @@ class MainActivity : ComponentActivity() {
                     BackHandler { vm.close() }
                     EditorScreen(
                         text = vm.editorText,
+                        color = vm.editorColor,
                         onTextChange = vm::onTextChange,
+                        onColorChange = vm::setColor,
                         onBack = vm::close,
                         onShare = { share(vm.editorText) },
                         onDelete = vm::deleteOpenNote,

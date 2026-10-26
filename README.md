@@ -6,15 +6,18 @@ Ingen konto, ingen sky og ingen reklame: notata er vanlege `.txt`-filer på tele
 <p>
   <img src="docs/liste.png" width="240" alt="Lista over notat">
   <img src="docs/editor.png" width="240" alt="Editoren">
+  <img src="docs/liste-mork.png" width="240" alt="Lista i mørkt tema">
 </p>
 
-## Funksjonar (versjon 1.0)
+## Funksjonar (versjon 1.1)
 
 - Liste over notat, nyaste først, med tittel (første linje), førehandsvising og dato
 - Skriv nytt notat med **+**
 - Automatisk lagring medan du skriv, og når du går ut av appen
 - Del eit notat (e-post, meldingar o.l.)
 - Slett notat (med stadfesting)
+- **Fargar på notat** (nytt i 1.1): vel mellom 8 fargar med palett-knappen. Fargen blir vist på
+  kortet i lista og som bakgrunn i heile editoren, og er tilpassa både lyst og mørkt tema
 - Tomme notat blir ikkje lagra
 - Lyst og mørkt tema, fargar frå telefonen på Android 12+
 - Krev Android 8.0 eller nyare
@@ -66,8 +69,15 @@ Ved ny versjon: auk `versionCode` (og `versionName`) i `app/build.gradle.kts`.
 | `ui/NoteListScreen.kt` | Skjermbiletet med lista |
 | `ui/EditorScreen.kt` | Skjermbiletet der du skriv |
 | `ui/theme/Theme.kt` | Fargar og lyst/mørkt tema |
+| `ui/NoteColorUi.kt` | Fargeveljaren og koplinga mellom notatfarge og skjermfarge |
+| `data/NoteColors.kt` | Dei 8 notatfargane, og `ColorStore` som hugsar fargane i `colors.properties` |
 | `data/NoteRepository.kt` | Les og skriv `.txt`-filer. Veit ingenting om Android |
 | `res/values/strings.xml` | All tekst i appen (nynorsk) |
-| `src/test/...` | Testar: lagring (JUnit) og heile brukarflyten (Robolectric) |
+| `src/test/...` | Testar: lagring og fargar (JUnit) og heile brukarflyten (Robolectric) |
+
+## Versjonar
+
+- **1.1**: Fargar på notat
+- **1.0**: Første versjon
 
 Appen er skriven i **Kotlin** med **Jetpack Compose**, som er dagens standard for Android-appar.
