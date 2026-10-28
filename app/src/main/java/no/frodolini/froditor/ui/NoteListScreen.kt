@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import no.frodolini.froditor.R
 import no.frodolini.froditor.data.Note
 import no.frodolini.froditor.data.NoteColor
+import no.frodolini.froditor.ui.theme.froditorTopBarColors
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -50,7 +51,12 @@ fun NoteListScreen(
     onNewNote: () -> Unit,
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text(stringResource(R.string.app_name)) }) },
+        topBar = {
+            TopAppBar(
+                colors = froditorTopBarColors(),
+                title = { Text(stringResource(R.string.app_name)) },
+            )
+        },
         floatingActionButton = {
             FloatingActionButton(onClick = onNewNote) {
                 Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.new_note))

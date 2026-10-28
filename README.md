@@ -77,6 +77,7 @@ Ved ny versjon: auk `versionCode` (og `versionName`) i `app/build.gradle.kts`.
 
 ## Versjonar
 
+- **1.1.1**: Grøn tittellinje, som i Froditor for Linux
 - **1.1**: Fargar på notat
 - **1.0**: Første versjon
 

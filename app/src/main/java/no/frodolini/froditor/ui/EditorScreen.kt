@@ -18,7 +18,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.res.painterResource
 import no.frodolini.froditor.data.NoteColor
 import androidx.compose.runtime.Composable
@@ -35,6 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import no.frodolini.froditor.R
+import no.frodolini.froditor.ui.theme.froditorTopBarColors
 
 /** Skjermbiletet der du skriv. Teksten blir lagra automatisk. */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,7 +52,7 @@ fun EditorScreen(
     var pickColor by rememberSaveable { mutableStateOf(false) }
     val focus = remember { FocusRequester() }
 
-    // Heile skjermen, inkludert verktøylinja, får fargen til notatet.
+    // Heile skjermen, bortsett frå den grøne tittellinja, får fargen til notatet.
     val bg = color.toColorOrNull() ?: MaterialTheme.colorScheme.surface
 
     Scaffold(
@@ -60,7 +60,7 @@ fun EditorScreen(
         contentColor = MaterialTheme.colorScheme.onSurface,
         topBar = {
             TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = bg),
+                colors = froditorTopBarColors(),
                 title = { Text(stringResource(R.string.note)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {

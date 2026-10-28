@@ -2,7 +2,10 @@ package no.frodolini.froditor.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -33,4 +36,24 @@ fun FroditorTheme(content: @Composable () -> Unit) {
         else -> LightColors
     }
     MaterialTheme(colorScheme = colors, content = content)
+}
+
+private val FroditorGreen = Color(0xFF2E7D32)
+private val FroditorGreenDark = Color(0xFF1B5E20)
+
+/**
+ * Grøn tittellinje, som i Froditor for Linux. Fargen er den same uansett
+ * Material You-fargane frå telefonen, men litt mørkare i mørkt tema.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun froditorTopBarColors(): TopAppBarColors {
+    val green = if (isSystemInDarkTheme()) FroditorGreenDark else FroditorGreen
+    return TopAppBarDefaults.topAppBarColors(
+        containerColor = green,
+        scrolledContainerColor = green,
+        navigationIconContentColor = Color.White,
+        titleContentColor = Color.White,
+        actionIconContentColor = Color.White,
+    )
 }
