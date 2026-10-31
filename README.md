@@ -82,3 +82,14 @@ Ved ny versjon: auk `versionCode` (og `versionName`) i `app/build.gradle.kts`.
 - **1.0**: Første versjon
 
 Appen er skriven i **Kotlin** med **Jetpack Compose**, som er dagens standard for Android-appar.
+
+## Lisens
+
+© 2026 Frode Fjellanger
+
+Froditor for Android er lisensiert under [MIT-lisensen](LICENSE). Du kan bruke, kopiere,
+endre og dele koden fritt, også i eigne prosjekt, så lenge opphavsmerknaden og
+lisensteksten blir med. Programmet kjem **utan nokon form for garanti**.
+
+Til samanlikning er [Flyradar](https://github.com/Frodolini/Flyradar-Android) lisensiert
+under GPL-3.0, som i tillegg krev at det du deler vidare, òg har open kjeldekode.
